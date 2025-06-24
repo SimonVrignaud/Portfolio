@@ -1,0 +1,255 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #00b4d8;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  font-size: 3rem;
+}
+
+.name {
+  /* font-size: 5rem; */
+  display: flex;
+  align-items: center;
+  /* opacity: 0;
+  transform: scaleX(0);
+  transition: transform 1s ease-out, opacity 1s ease-out; */
+}
+
+.line {
+  width: 2px;
+  height: 50px;
+  background: #00b4d8;
+  margin: 0 10px;
+}
+
+.left,
+.right {
+  display: inline-block;
+  width: 50%;
+  /* white-space: nowrap;
+  overflow: hidden;
+  max-width: 0; */
+  transition: max-width 2s ease-out 2s;
+}
+
+.about {
+  /* padding: 100px 20px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin-bottom: 30%;
+}
+
+.about-text {
+  font-size: 2rem;
+  max-width: 50%;
+  /* opacity: 0; */
+  /* transform: translateX(50px); */
+}
+
+.about {
+  position: relative; /* Permet de positionner la forme */
+}
+
+.about {
+  position: relative; /* Permet de positionner la forme à l'intérieur */
+  overflow: hidden; /* Cache tout ce qui dépasse la zone */
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 180, 216, 0.2); /* Bleu avec transparence */
+  border-radius: 50%; /* C'est un cercle */
+  top: 50%;
+  left: -100%; /* Commence à droite, en dehors de l'écran */
+  transform: translateY(-50%); /* Centré verticalement */
+  opacity: 0; /* Commence invisible */
+  animation: slideInFromLeft 2s ease-out 0.5s forwards,
+    fadeIn 2s ease-out 0.5s forwards;
+  animation-delay: 2s;
+  z-index: -1; /* Derrière le texte */
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    left: -0%; /* Commence à droite */
+    opacity: 0; /* Commence invisible */
+  }
+  100% {
+    left: 50%; /* Arrive au centre */
+    opacity: 1; /* Devient visible */
+    transform: translate(-50%, -50%); /* Centré */
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.projects {
+  display: grid;
+  grid-template-rows: repeat(3, 25%);
+  grid-template-columns: repeat(2, 50%);
+  gap: 10%;
+  padding: 10%;
+  background-color: #0077b6;
+  height: 250vh;
+}
+
+.project-card {
+  background: white;
+  border-radius: 10px;
+  padding: 5%;
+  text-align: center;
+  opacity: 0;
+  transform: none;
+  transition: transform 1s ease-out, opacity 1s ease-out;
+  margin-left: 3vw;
+}
+
+.scale-to-fit {
+  width: 100%;
+  height: 50%;
+  object-fit: contain; /* Ajuste l’image pour qu’elle soit entièrement visible */
+  object-position: top;
+}
+
+.project-card.right {
+  transform: translateX(50px);
+}
+
+project-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.project-card h2 {
+  margin: 10px 0;
+}
+
+.project-card a {
+  color: #03045e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+button {
+  width: 10rem;
+  height: 3rem;
+  border: 2px solid #00b4d8;
+  border-radius: 5px;
+  background-color: #caf0f8;
+  color: #03045e;
+  transition: background-color 0.5s, border 0.5s, color 0.5s;
+}
+
+button:hover {
+  background-color: #00b4d8;
+  border: 2px solid #03045e;
+  color: #caf0f8;
+}
+
+footer {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+  width: 450px;
+  height: 600px;
+}
+
+.popup-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media screen and ( max-width: 700px ) {
+    
+.hero {
+  font-size: 1rem;
+}
+
+.line {
+  width: 1px;
+  height: 25px;
+}
+
+.about::before {
+  width: 300px;
+  height: 300px;
+}
+
+.about-text {
+  font-size: 1rem;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  grid-template-rows: repeat(6, 7%);
+  align-items: center;
+  height: 600vh;
+}
+
+.project-card {
+  margin-top: 300px;
+  margin-left: 15vw;
+}
+
+.popup-content {
+  width: 70vw;
+  height: 90vh;
+}
+
+}
